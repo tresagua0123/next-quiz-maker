@@ -38,7 +38,7 @@ export default function Result({mentalAgeData}) {
     <Wrapper>
         <Head 
         description={mentalAgeData.description}
-        image={'https://cly7796.net/blog/sample/rewrite-ogp-with-javascript/01/img' + 2 + '.jpg'}
+        image={mentalAgeData.id > 60 ? OLD_MAN_IMAGE : BABY_IMAGE}
         title={mentalAgeData.title}
         />
         <p>Result</p>
