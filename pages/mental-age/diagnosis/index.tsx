@@ -7,6 +7,7 @@ import {
     TwitterShareButton, 
     TwitterIcon
 } from 'react-share';
+import { useRouter } from 'next/router'
 
 const TotalWrapper = styled.div`
     display: flex;
@@ -15,11 +16,16 @@ const TotalWrapper = styled.div`
     align-items: center;
 `;
 
+const QuestionWrapper = styled.div`
+    min-width: 350px;
+`;
+
 const Description = styled.div`
     cursor: pointer;
 `;
 
 export default function Quiz(){
+    const router = useRouter();
     const [currentQuestionNum, setCurrentQuestionNum] = useState(0);
     const [selectedQuestionId, setSelectedQuestionId] = useState(0);
     const [isQuizDone, setIsQuizDone] = useState(false);
@@ -107,8 +113,12 @@ export default function Quiz(){
 
     const renderOptions = () => {
         console.log(selectedQuestionId, QUESTIONS[selectedQuestionId])
-        if(currentQuestionNum === 5) return;
-        return (<div>
+        if(currentQuestionNum === 5) {
+            router.push("/mental-age/diagnosis/result/22");
+            return;
+        };
+        return (
+        <QuestionWrapper>
             <p>{QUESTIONS[currentQuestionNum].title}</p>
             {QUESTIONS[currentQuestionNum].descriptions.map((description) => {
                 return (
@@ -117,13 +127,14 @@ export default function Quiz(){
                     </Description>
                 )
             })}
-        </div>)
+        </QuestionWrapper>)
     }
     
     return (
         <TotalWrapper>
+            {renderOptions()}
             {/* <ProgressBar progressRate={(currentQuestionNum) / 5} /> */}
-            {isQuizDone ?
+            {/* {isQuizDone ?
                 <div>
                     <p>あなたにあった言語は英語</p>
                     <img alt="icon" src={png} />
@@ -136,7 +147,7 @@ export default function Quiz(){
                 <div>
                         {renderOptions()}
                 </div>
-                 )}
+                 )} */}
     
         </TotalWrapper>)
 }

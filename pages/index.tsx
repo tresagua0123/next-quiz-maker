@@ -17,16 +17,16 @@ const ImageHolder = styled.div`
 
 export default function Home(){
   const router = useRouter();
-  const handleClick = (e) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, url: string) => {
     e.preventDefault();
-    router.push("mental-age")
+    router.push(url)
   }
   return (
     <Wrapper>
       <div>Welcome to Your Advisor!</div>
       <div>あなたの精神年齢などを診断し、生活に役立てるアプリです✨</div>
       <p>精神年齢アドバイザー</p>
-      <ImageHolder onClick={handleClick}>
+      <ImageHolder onClick={(e) => handleClick(e, "mental-age")}>
       <img src={BRAIN_IMG} width={300}/>
       </ImageHolder>
     </Wrapper>
