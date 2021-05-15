@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+
+const BRAIN_IMG = require("public/static/brain.jpg");
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,6 +20,7 @@ export default function mentalAge(){
     <Wrapper>
     <div>精神年齢アドバイザー</div>
     <div>あなたの精神年齢は何歳？無料で診断して、精神年齢を高めよう！</div>
+    <img  src={BRAIN_IMG}/>
     <p onClick={handleClick}>精神年齢をチェックする</p>
     </Wrapper>
     )

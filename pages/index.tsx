@@ -23,7 +23,7 @@ export default function Home(){
   }
   return (
     <Wrapper>
-      <div>Welcome to Your Advisor!</div>
+      <div>みんなの健康アドバイザー</div>
       <div>あなたの精神年齢などを診断し、生活に役立てるアプリです✨</div>
       <p>精神年齢アドバイザー</p>
       <ImageHolder onClick={(e) => handleClick(e, "mental-age")}>

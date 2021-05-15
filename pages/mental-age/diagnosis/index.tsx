@@ -75,8 +75,8 @@ export default function Quiz(){
     const QUESTIONS: SelectedQuestion[] = [
         {
             id: 0, 
-            title: "簡単な言語であることが何より大事だ",
-            descriptions: ["強く思う", "思う", "思わない", "全く思わない"]
+            title: "落ち着いているねとよく言われる",
+            descriptions: ["頻繁言われる", "時々言われる", "あまり言われない", "全く言われない"]
         }, 
         {
             id: 1,
