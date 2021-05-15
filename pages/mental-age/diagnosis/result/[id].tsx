@@ -34,14 +34,16 @@ export default function Result({mentalAgeData}) {
         e.preventDefault();
         router.replace("mental-age")
       }
+      console.log(BABY_IMAGE);
     return (
     <Wrapper>
         <Head 
         description={mentalAgeData.description}
-        // image={mentalAgeData.id > 60 ? OLD_MAN_IMAGE : BABY_IMAGE}
+        image={mentalAgeData.id > 60 ? OLD_MAN_IMAGE : BABY_IMAGE}
         // url={`https://next-quiz-maker.vercel.app/mental-age/diagnosis/result/${mentalAgeData.id}`}
         // TODO: 正しくシェアの時にイメージを表示させる。
-        image={"https://dotup.org/uploda/dotup.org2474715.png"}
+        // 次のように、リモートに画像を保存してやればいいっぽい、、？
+        // image={"https://dotup.org/uploda/dotup.org2474715.png"}
         title={mentalAgeData.title}
         />
         <p>Result</p>
