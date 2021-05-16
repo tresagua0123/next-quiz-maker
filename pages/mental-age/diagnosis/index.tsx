@@ -7,26 +7,60 @@ import {
     TwitterShareButton, 
     TwitterIcon
 } from 'react-share';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import { ProgressBar } from "components/ProgressBar";
 
 const TotalWrapper = styled.div`
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    background: lightblue;
+    flex: 1;
+    /* max-width: 350px; */
+    /* width: 800px; */
 `;
 
+const ContentsWrapper = styled.div`
+  max-width: 800px;
+  width: 100%;
+  /* max-height: 1000px; */
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  /* background: white; */
+`
+
 const QuestionWrapper = styled.div`
-    min-width: 350px;
-    width: 800px;
-    background: white;
+    /* background: white; */
+    width: 100%;
     justify-content: center;
     flex-direction: column;
 `;
 
-const Description = styled.div`
-    cursor: pointer;
+const QuestionText = styled.p`
+    font-size: 24px;
+    font-weight: bold;
 `;
+
+const OptionWrapper = styled.div`
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 4px;
+`;
+
+const OptionNumWrapper = styled.div`
+    background: #0099FF;
+`;
+
+const OptionDescriptionWrapper = styled.div`
+    cursor: pointer;
+    background: white;
+    width: 100%;
+`;
+
+
 
 export default function Quiz(){
     const router = useRouter();
@@ -43,32 +77,7 @@ export default function Quiz(){
                 return;
             };
         renderOptions();
-        console.log(currentQuestionNum)
-        console.log("currentQuestionNum changed")
     }, [currentQuestionNum])
-
-    const [png, setPng] = useState<string | null>(null)
-
-    useEffect(() => {
-      const canvasElem = document.createElement('canvas')
-      canvasElem.width = width
-      canvasElem.height = height
-      const ctx = canvasElem.getContext('2d')
-  
-      // draw
-      if(ctx === null) return;
-  
-      ctx.clearRect(0, 0, width, height)
-      ctx.fillStyle = "yellow"
-      ctx.fillRect(0, 0, width, height)
-
-      ctx.font = "16pt Arial";
-      ctx.fillStyle = "blue"
-      ctx.fillText("あなたの言語は英語です！", 0, 50)
-      ctx.fillText("あなたの言語は英語です！", 0, 122)
-  
-      setPng(canvasElem.toDataURL())
-    }, [])
 
     type SelectedQuestion = {
         id: number;
@@ -116,19 +125,21 @@ export default function Quiz(){
     }
 
     const renderOptions = () => {
-        console.log(selectedQuestionId, QUESTIONS[selectedQuestionId])
         if(currentQuestionNum === 5) {
             router.push("/mental-age/diagnosis/result/22");
             return;
         };
         return (
         <QuestionWrapper>
-            <p>{QUESTIONS[currentQuestionNum].title}</p>
-            {QUESTIONS[currentQuestionNum].descriptions.map((description) => {
+            <QuestionText>{QUESTIONS[currentQuestionNum].title}</QuestionText>
+            {QUESTIONS[currentQuestionNum].descriptions.map((description, i) => {
                 return (
-                    <Description>
+                    <OptionWrapper>
+                    <OptionNumWrapper><p>{`${i}. `}</p></OptionNumWrapper>
+                    <OptionDescriptionWrapper>
                     <p onClick={getNextQuestion}>{description}</p>
-                    </Description>
+                    </OptionDescriptionWrapper>
+                    </OptionWrapper>
                 )
             })}
         </QuestionWrapper>)
@@ -136,22 +147,9 @@ export default function Quiz(){
     
     return (
         <TotalWrapper>
-            {renderOptions()}
-            {/* <ProgressBar progressRate={(currentQuestionNum) / 5} /> */}
-            {/* {isQuizDone ?
-                <div>
-                    <p>あなたにあった言語は英語</p>
-                    <img alt="icon" src={png} />
-                    
-                    <TwitterShareButton url={"http://31202cc9195d.ngrok.io"} title={"語学診断App"} via={"kaimaru31"}>
-                    <TwitterIcon size={31} round />
-                    </TwitterShareButton>
-                </div>
-                 : (
-                <div>
-                        {renderOptions()}
-                </div>
-                 )} */}
-    
+            <ContentsWrapper>
+            <ProgressBar progressRate={currentQuestionNum / 5} />
+            {renderOptions()}    
+            </ContentsWrapper>
         </TotalWrapper>)
 }

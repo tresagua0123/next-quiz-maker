@@ -4,7 +4,17 @@ export async function getMentalAgeData(id) {
       title: "精神年齢アドバイザー",
       description: `あなたの精神年齢は${id}歳です！幼稚園児と同じレベル。精神年齢を高めるには、さらなる努力が必要です。`
     }
-  }
+}
+
+export function getAgeText(age) {
+    let text = "";
+    if(age < 0){
+        text = "精神年齢として、0歳にも達していない未熟な状態です。赤ちゃんからやり直しましょう！"
+    } else if (age < 4){
+        text = "幼稚園児と同じレベル。精神年齢を高めるには、さらなる努力が必要です。"
+    }
+    return `あなたの精神年齢は${age}歳です！`
+}
 
 
 // TODO: Canvasで生成した画像をfirestoreに保存する。

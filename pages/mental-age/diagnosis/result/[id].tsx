@@ -20,6 +20,7 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     background: lightgray;
+    flex: 1;
 `;
 
 const ShareButtonsWrapper = styled.div`

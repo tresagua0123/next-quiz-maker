@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
+import Header from "components/Header";
 
 const BRAIN_IMG = require("public/assets/brain.png")
 
@@ -8,11 +9,12 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  flex: 1;
 `;
 
 const ContentesWrapper = styled.div`
-  width: 800px;
-  height: 1000px;
+  max-width: 800px;
+  /* max-height: 1000px; */
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -52,9 +54,7 @@ export default function Home(){
   return (
     <Wrapper>
       <ContentesWrapper>
-      <ImageHolder>
-      <img src={ADVISOR_IMAGE} height={60} />
-      </ImageHolder>
+      <Header />
 
       {/* <div>あなたの精神年齢などを診断し、生活に役立てるアプリです✨</div> */}
       <div>アドバイザー一覧</div>

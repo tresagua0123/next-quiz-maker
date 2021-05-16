@@ -7,19 +7,24 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex:1;
+  /* flex:1; */
+  /* max-width: 800px; */
   /* width: 800px; */
 `;
 
 const ContentsWrapper = styled.div`
-    width: 800px;
+    max-width: 800px;
+    /* height: 1000px; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    background: white;
+    /* background: white; */
 `;
 
 const ImageHolder = styled.div`
     /* width: 800px; */
+    width: 300px;
     cursor: pointer;
 `;
 
@@ -36,7 +41,7 @@ export default function mentalAge(){
     <div>精神年齢アドバイザー</div>
     <div>あなたの精神年齢は何歳？無料で診断して、精神年齢を高めよう！</div>
     <ImageHolder onClick={handleClick}>
-    <img  src={BRAIN_IMG}/>
+    <img  src={BRAIN_IMG} height="300"/>
     </ImageHolder>
     {/* <p onClick={handleClick}>精神年齢をチェックする</p> */}
     </ContentsWrapper>
