@@ -6,7 +6,7 @@ module.exports = {
         loader: 'url-loader',
         options: {
           esModule: false,
-          limit: 100000
+          limit: 1000000
         }
       }
     })

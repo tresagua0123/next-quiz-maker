@@ -1,14 +1,9 @@
 import React, {useEffect, useState} from "react";
 import styled from "styled-components";
-// import { ProgressBar } from "../components/ProgressBar";
-import { 
-    FacebookShareButton, 
-    FacebookIcon,
-    TwitterShareButton, 
-    TwitterIcon
-} from 'react-share';
 import { useRouter } from 'next/router';
 import { ProgressBar } from "components/ProgressBar";
+import Header from "components/Header";
+import { MENTAL_AGE_QUESTIONS } from "consts/texts"
 
 const TotalWrapper = styled.div`
     display: flex;
@@ -65,79 +60,34 @@ const OptionDescriptionWrapper = styled.div`
 export default function Quiz(){
     const router = useRouter();
     const [currentQuestionNum, setCurrentQuestionNum] = useState(0);
-    const [selectedQuestionId, setSelectedQuestionId] = useState(0);
-    const [isQuizDone, setIsQuizDone] = useState(false);
+    const [totalPoint, setTotalPoint] = useState(0);
 
-    const width = 255
-    const height = 255
 
     useEffect(() => {
-        if(currentQuestionNum === 5) {
-                setIsQuizDone(true);
-                return;
-            };
         renderOptions();
-    }, [currentQuestionNum])
+    }, [currentQuestionNum])  
 
-    type SelectedQuestion = {
-        id: number;
-        title: string;
-        descriptions: string[];
-    }
-
-    const QUESTIONS: SelectedQuestion[] = [
-        {
-            id: 0, 
-            title: "落ち着いているねとよく言われる",
-            descriptions: ["頻繁言われる", "時々言われる", "あまり言われない", "全く言われない"]
-        }, 
-        {
-            id: 1,
-            title: "あなたが言語を勉強する目的は？",
-            descriptions: ["趣味", "ビジネス", "出会い目的", "友達作り"]
-        }, 
-        {
-            id: 2,
-            title: "一番好きな地域は？",
-            descriptions: ["ヨーロッパ", "アジア", "アフリカ", "南米"]
-        }, 
-        {
-            id: 3,
-            title: "言語学習で大事にしたいことは",
-            descriptions: ["利益になるかどうか", "話者の多さ", "趣味として続けられるか", "レアな言語であること"]
-        }, 
-        {
-            id: 4,
-            title: "学ぶ言語文化について大事なことは？",
-            descriptions: ["オシャレさ", "神秘性", "グルメ", "歴史"]
-        }, 
-    ]
-
-    const getNextQuestion = () => {
+    const getNextQuestion = (point: number) => {
         const nextQuestionNum = currentQuestionNum + 1;
         setCurrentQuestionNum(nextQuestionNum);
-    }
-
-    const selectQuestion = () => {
-        const randomNum = Math.random()
-        const questionId = Math.round(randomNum) + currentQuestionNum;
-        setSelectedQuestionId(questionId)
+        setTotalPoint(totalPoint + point)
     }
 
     const renderOptions = () => {
         if(currentQuestionNum === 5) {
-            router.push("/mental-age/diagnosis/result/22");
+            router.push(`/mental-age/diagnosis/result/${totalPoint}`);
             return;
         };
         return (
         <QuestionWrapper>
-            <QuestionText>{QUESTIONS[currentQuestionNum].title}</QuestionText>
-            {QUESTIONS[currentQuestionNum].descriptions.map((description, i) => {
+            <QuestionText>{MENTAL_AGE_QUESTIONS[currentQuestionNum].title}</QuestionText>
+            {MENTAL_AGE_QUESTIONS[currentQuestionNum].descriptions.map((description, i) => {
+                // setTotalPoint(totalPoint + description.point);
                 return (
                     <OptionWrapper>
                     <OptionNumWrapper><p>{`${i}. `}</p></OptionNumWrapper>
                     <OptionDescriptionWrapper>
-                    <p onClick={getNextQuestion}>{description}</p>
+                    <p onClick={() => getNextQuestion(description.point)} >{description.text}</p>
                     </OptionDescriptionWrapper>
                     </OptionWrapper>
                 )
@@ -147,6 +97,8 @@ export default function Quiz(){
     
     return (
         <TotalWrapper>
+            <Header />
+            <p>精神年齢チェッカー</p>
             <ContentsWrapper>
             <ProgressBar progressRate={currentQuestionNum / 5} />
             {renderOptions()}    

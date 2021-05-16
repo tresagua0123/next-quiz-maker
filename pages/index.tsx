@@ -2,30 +2,34 @@ import React from 'react';
 import styled from "styled-components";
 import { useRouter } from 'next/router';
 import Header from "components/Header";
+import Footer from "components/Footer";
 
-const BRAIN_IMG = require("public/assets/brain.png")
+const BRAIN_IMG = require("public/assets/mental-age.png")
+console.log(BRAIN_IMG);
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  flex: 1;
+  /* flex: 1; */
 `;
 
 const ContentesWrapper = styled.div`
-  max-width: 800px;
-  /* max-height: 1000px; */
+  /* width: 800px;
+  height: 800px; */
+  height: 600px;
   display: flex;
   align-items: center;
   flex-direction: column;
   background: white;
+  position: relative;
 `;
 
 const ImageHolder = styled.div`
   justify-content: start;
   cursor: pointer;
   &:hover {
-    opacity: 0.8;
+    opacity: 0.5;
   }
   /* width: 600px; */
 `;
@@ -39,7 +43,7 @@ const AdvisorsWrapper = styled.div`
 const AdvisorHolder = styled.div`
   cursor: pointer;
   &:hover {
-    opacity: 0.8;
+    opacity: 0.5;
   }
 `;
 
@@ -57,15 +61,15 @@ export default function Home(){
       <Header />
 
       {/* <div>あなたの精神年齢などを診断し、生活に役立てるアプリです✨</div> */}
-      <div>アドバイザー一覧</div>
       {/* <ImageHolder > */}
-      <p>精神年齢アドバイザー</p>
+      <p>New! 精神年齢・診断アドバイザー</p>
       <AdvisorsWrapper>
       <AdvisorHolder>
       <img src={BRAIN_IMG} onClick={(e) => handleClick(e, "mental-age")} width={300}/>
       </AdvisorHolder>
       </AdvisorsWrapper>
       {/* </ImageHolder> */}
+      <Footer />
       </ContentesWrapper>
     </Wrapper>
   )

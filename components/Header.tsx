@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from 'next/link';
 
 const ImageHolder = styled.div`
     /* justify-content: start; */
@@ -13,10 +14,10 @@ const ADVISOR_IMAGE = require("public/assets/advisor.png");
 
 export default function Header(){
     return(
-    <div>
+    <Link href={"/"}>
     <ImageHolder>
     <img src={ADVISOR_IMAGE} height={60} />
     </ImageHolder>
-    </div>
+    </Link>
     )
 }

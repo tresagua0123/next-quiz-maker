@@ -19,7 +19,7 @@ const Wrapper = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    background: lightgray;
+    /* background: lightgray; */
     flex: 1;
 `;
 
@@ -35,7 +35,6 @@ export default function Result({mentalAgeData}) {
         e.preventDefault();
         router.replace("mental-age")
       }
-      console.log(BABY_IMAGE);
     return (
     <Wrapper>
         <Head 
