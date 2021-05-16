@@ -18,6 +18,10 @@ const TotalWrapper = styled.div`
 
 const QuestionWrapper = styled.div`
     min-width: 350px;
+    width: 800px;
+    background: white;
+    justify-content: center;
+    flex-direction: column;
 `;
 
 const Description = styled.div`

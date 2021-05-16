@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 const Wrapper = styled.div`
   background: lightgray;
+  height: 1000px;;
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {

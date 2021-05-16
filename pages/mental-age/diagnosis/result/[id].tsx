@@ -39,19 +39,17 @@ export default function Result({mentalAgeData}) {
     <Wrapper>
         <Head 
         description={mentalAgeData.description}
-        // やっぱリモートからとってこんと表示おかしくなるかも、、？明日、要検討。
-        // image={mentalAgeData.id > 60 ? OLD_MAN_IMAGE : BABY_IMAGE}
+        // 参考URL: https://nextjs.org/docs/basic-features/static-file-serving
         image={"https://next-quiz-maker.vercel.app/assets/baby_boy04_laugh.png"}
         title={mentalAgeData.title}
         />
         <p>Result</p>
         <p>{mentalAgeData.description}</p>
         <img src={mentalAgeData.id > 60 ? OLD_MAN_IMAGE : BABY_IMAGE}/>
-        {/* <img src={"https://next-quiz-maker.vercel.app/public/static/baby_boy04_laugh.png"} /> */}
-        <p>この結果をシェアする</p>
         <Link href={"/mental-age"}>もどる</Link>
+        <p>この結果をシェアする</p>
         <ShareButtonsWrapper>
-        <TwitterShareButton title={"精神年齢アドバイザー"} url={`https://next-quiz-maker.vercel.app/mental-age/diagnosis/result/${mentalAgeData.id}`} via={"kaimaru31"}>
+        <TwitterShareButton title={"精神年齢アドバイザー #精神年齢 #精神年齢診断"} url={`https://next-quiz-maker.vercel.app/mental-age/diagnosis/result/${mentalAgeData.id}`} via={"kaimaru31"}>
             <TwitterIcon size={31} round />
         </TwitterShareButton>
         </ShareButtonsWrapper>
