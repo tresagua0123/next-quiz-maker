@@ -39,12 +39,15 @@ export default function Result({mentalAgeData}) {
     <Wrapper>
         <Head 
         description={mentalAgeData.description}
-        image={mentalAgeData.id > 60 ? OLD_MAN_IMAGE : BABY_IMAGE}
+        // やっぱリモートからとってこんと表示おかしくなるかも、、？明日、要検討。
+        // image={mentalAgeData.id > 60 ? OLD_MAN_IMAGE : BABY_IMAGE}
+        image={"https://next-quiz-maker.vercel.app/public/static/baby_boy04_laugh.png"}
         title={mentalAgeData.title}
         />
         <p>Result</p>
         <p>{mentalAgeData.description}</p>
         <img src={mentalAgeData.id > 60 ? OLD_MAN_IMAGE : BABY_IMAGE}/>
+        {/* <img src={"https://next-quiz-maker.vercel.app/public/static/baby_boy04_laugh.png"} /> */}
         <p>この結果をシェアする</p>
         <Link href={"/mental-age"}>もどる</Link>
         <ShareButtonsWrapper>
