@@ -11,8 +11,8 @@ import {
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 
-const BABY_IMAGE = require("public/static/baby_boy04_laugh.png");
-const OLD_MAN_IMAGE = require("public/static/ojiisan01_laugh.png");
+const BABY_IMAGE = require("public/assets/baby_boy04_laugh.png");
+const OLD_MAN_IMAGE = require("public/assets/ojiisan01_laugh.png");
 
 const Wrapper = styled.div`
     display: flex;
@@ -41,7 +41,7 @@ export default function Result({mentalAgeData}) {
         description={mentalAgeData.description}
         // やっぱリモートからとってこんと表示おかしくなるかも、、？明日、要検討。
         // image={mentalAgeData.id > 60 ? OLD_MAN_IMAGE : BABY_IMAGE}
-        image={"https://next-quiz-maker.vercel.app/public/static/baby_boy04_laugh.png"}
+        image={"https://next-quiz-maker.vercel.app/assets/baby_boy04_laugh.png"}
         title={mentalAgeData.title}
         />
         <p>Result</p>

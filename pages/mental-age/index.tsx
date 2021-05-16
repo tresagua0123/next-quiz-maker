@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useRouter } from 'next/router';
 
-const BRAIN_IMG = require("public/static/brain.jpg");
+const BRAIN_IMG = require("public/assets/brain.jpg");
 
 const Wrapper = styled.div`
   display: flex;
