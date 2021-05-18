@@ -28,7 +28,7 @@ const Wrapper = styled.div`
 
 const ContentsWrapper = styled.div<{isPhone?: boolean}>`
   /* max-width: 800px; */
-  width: ${({isPhone}) => isPhone && "500px"};
+  width: ${({isPhone}) => !isPhone && "500px"};
   /* width: 100%; */
   height: 100vh;
   /* max-height: 1000px; */
@@ -54,13 +54,8 @@ const Title = styled.div`
 `;
 
 
-export default function Result({mentalAgeData}) {
+export default function Result({mentalAgeData, isPhone}) {
     const router = useRouter();
-    const isPhone = useMediaQuery({query: "(max-width: 600px)"});
-    const handleClick = (e) => {
-        e.preventDefault();
-        router.replace("mental-age")
-      }
     return (
     <Wrapper>
         <Head 

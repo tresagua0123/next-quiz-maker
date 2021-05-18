@@ -73,7 +73,6 @@ export default function Quiz(){
     const [currentQuestionNum, setCurrentQuestionNum] = useState(0);
     const [totalPoint, setTotalPoint] = useState(0);
 
-
     useEffect(() => {
         renderOptions();
     }, [currentQuestionNum])  

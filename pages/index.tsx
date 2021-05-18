@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import Header from "components/Header";
 import Footer from "components/Footer";
 import {textM} from "consts/layout";
-import { useMediaQuery } from 'react-responsive';
 
 const BRAIN_IMG = require("public/assets/mental-age.png")
 
@@ -36,25 +35,17 @@ const Image = styled.img<{isPhone?: boolean}>`
     margin-bottom: 20px;
 `;
 
-const ADVISOR_IMAGE = require("public/assets/advisor.png");
-
 const Title = styled.div`
     ${textM};
     margin: 8px 0;
 `;
 
-export default function Home(){
-  // const [isPhone, setIsPhone] = useState(false);
+export default function Home(pageProps){
   const router = useRouter();
-  const isPhone = useMediaQuery({query: "(max-width: 600px)"});
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, url: string) => {
     e.preventDefault();
     router.push(url)
   }
-
-  // useEffect(() => {
-  //   setIsPhone(useMediaQuery({query: "(max-width: 600px)"}));
-  // }, [isPhone])
 
   return (
     <Wrapper>
@@ -63,7 +54,7 @@ export default function Home(){
       {/* <div>あなたの精神年齢などを診断し、生活に役立てるアプリです✨</div> */}
       <Title>New! 精神年齢チェッカー</Title>
       <AdvisorHolder>
-      <Image src={BRAIN_IMG} onClick={(e) => handleClick(e, "mental-age")} isPhone={isPhone}  />
+      <Image src={BRAIN_IMG} onClick={(e) => handleClick(e, "mental-age")} isPhone={pageProps.isPhone}  />
       </AdvisorHolder>
       <Footer />
       </ContentesWrapper>

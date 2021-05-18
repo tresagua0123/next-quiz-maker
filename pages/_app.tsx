@@ -1,27 +1,30 @@
 import { useRef, useEffect, useState } from "react";
 import {AppProps} from 'next/app';
 import styled from "styled-components";
-import { useMediaQuery } from 'react-responsive';
 
-const Wrapper = styled.div<{isPhone: boolean; width: number;}>`
-  /* padding-top: 80px; */
+const BREAK_POINT = 600;
+
+const Wrapper = styled.div<{isPhone: boolean}>`
   background: lightblue;
-  /* max-width: 800px; */
-  max-height: ${({isPhone, width}) => isPhone ? `100vh` : "800px"};
+  max-height: ${({isPhone}) => isPhone ? `100vh` : "800px"};
 `;
 
-function MyApp({ Component, pageProps }: AppProps) {
-  const isPhone = useMediaQuery({query: "(max-width: 600px)"});
+function MyApp({ Component, pageProps, router }: AppProps) {
+  const [ isPhone, setIsPhone] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const [width, setWidth] = useState(0);
 
   useEffect(() => {
     if(!ref.current || !ref.current.clientWidth) return;
-    setWidth(ref.current.clientWidth)
-  }, [ref.current])
+    setIsPhone(ref.current.clientWidth < BREAK_POINT)
+  }, [router.pathname]);
+
+  pageProps = {
+    ...pageProps,
+    isPhone: isPhone
+  };
 
   return (
-    <Wrapper ref={ref} isPhone={isPhone} width={width}>
+    <Wrapper ref={ref} isPhone={isPhone}>
   <Component {...pageProps} />
   </Wrapper>
   )

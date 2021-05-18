@@ -3,7 +3,6 @@ import Header from "components/Header";
 import Footer from "components/Footer";
 import { useRouter } from 'next/router';
 import {textM} from "consts/layout";
-import { useMediaQuery } from 'react-responsive';
 
 const BRAIN_IMG = require("public/assets/brain-start.png");
 
@@ -43,9 +42,9 @@ const Title = styled.div`
 `;
 
 
-export default function mentalAge(){
+export default function mentalAge(pageProps){
     const router = useRouter();
-    const isPhone = useMediaQuery({query: "(max-width: 600px)"});
+    // const isPhone = useMediaQuery({query: "(max-width: 600px)"});
     const handleClick = (e) => {
         e.preventDefault();
         router.push("mental-age/diagnosis")
@@ -57,7 +56,7 @@ export default function mentalAge(){
     <Title>精神年齢チェッカー</Title>
     {/* <p>あなたの精神年齢は何歳？<br /> 10秒で診断。SNSでシェアしよう！</p> */}
     <ImageHolder onClick={handleClick}>
-    <Image  src={BRAIN_IMG} isPhone={isPhone} />
+    <Image  src={BRAIN_IMG} isPhone={pageProps.isPhone} />
     </ImageHolder>
     {/* <p onClick={handleClick}>精神年齢をチェックする</p> */}
     <Footer />

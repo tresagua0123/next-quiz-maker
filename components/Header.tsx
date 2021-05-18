@@ -8,13 +8,17 @@ const ImageHolder = styled.div`
     }
 `;
 
+const Image = styled.img`
+    /* width: 100%; */
+`;
+
 const ADVISOR_IMAGE = require("public/assets/advisor.png");
 
 export default function Header(){
     return(
     <Link href={"/"}>
     <ImageHolder>
-    <img src={ADVISOR_IMAGE} height={60} />
+    <Image src={ADVISOR_IMAGE} height={60} />
     </ImageHolder>
     </Link>
     )
