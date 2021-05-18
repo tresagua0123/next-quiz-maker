@@ -14,10 +14,10 @@ export const MENTAL_AGE_QUESTIONS: SelectedQuestion[] = [
         title: "落ち着いているねとよく言われる",
         descriptions: [{
             text: "頻繁に言われる",
-            point: 9
+            point: 12
         }, {
             text: "時々言われる", 
-            point: 3,
+            point: 6,
         }, {
             text: "あまり言われない",
             point: -1,
@@ -36,23 +36,23 @@ export const MENTAL_AGE_QUESTIONS: SelectedQuestion[] = [
             point: 11,
         }, {
             text: "あまりそうでない",
-            point: -3,
+            point: -1,
         }, {
             text: "全くそうでない",
-            point: -5}]
+            point: -2}]
     }, 
     {
         id: 2, 
-        title: "人を殴ったことがある",
+        title: "周りのことよりも、自分中心で動くことが多い",
         descriptions: [{
             text: "頻繁にある",
-            point: -8
+            point: -4
         }, {
             text: "時々ある", 
-            point: -4,
+            point: -2,
         }, {
             text: "あまりない",
-            point: 6,
+            point: 8,
         }, {
             text: "全くない",
             point: 12}]
@@ -62,10 +62,10 @@ export const MENTAL_AGE_QUESTIONS: SelectedQuestion[] = [
         title: "人に同情することが多い",
         descriptions: [{
             text: "頻繁にある",
-            point: 10
+            point: 12
         }, {
             text: "時々ある", 
-            point: 7,
+            point: 8,
         }, {
             text: "あまりない",
             point: -2,
@@ -78,7 +78,7 @@ export const MENTAL_AGE_QUESTIONS: SelectedQuestion[] = [
         title: "自分だけでなく周囲を考えて行動する",
         descriptions: [{
             text: "頻繁にする",
-            point: 9
+            point: 10
         }, {
             text: "時々する", 
             point: 7,

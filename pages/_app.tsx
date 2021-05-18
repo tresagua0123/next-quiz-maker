@@ -6,7 +6,8 @@ import { useMediaQuery } from 'react-responsive';
 const Wrapper = styled.div<{isPhone: boolean; width: number;}>`
   /* padding-top: 80px; */
   background: lightblue;
-  height: ${({isPhone, width}) => isPhone ? `${String(width * 1.8)}px` : "800px"};
+  /* max-width: 800px; */
+  max-height: ${({isPhone, width}) => isPhone ? `100vh` : "800px"};
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -18,7 +19,6 @@ function MyApp({ Component, pageProps }: AppProps) {
     if(!ref.current || !ref.current.clientWidth) return;
     setWidth(ref.current.clientWidth)
   }, [ref.current])
-
 
   return (
     <Wrapper ref={ref} isPhone={isPhone} width={width}>

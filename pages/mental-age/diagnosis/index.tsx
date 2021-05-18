@@ -3,7 +3,9 @@ import styled from "styled-components";
 import { useRouter } from 'next/router';
 import { ProgressBar } from "components/ProgressBar";
 import Header from "components/Header";
-import { MENTAL_AGE_QUESTIONS } from "consts/texts"
+import { MENTAL_AGE_QUESTIONS } from "consts/texts";
+import {textM} from "consts/layout";
+
 
 const TotalWrapper = styled.div`
     display: flex;
@@ -19,6 +21,7 @@ const TotalWrapper = styled.div`
 const ContentsWrapper = styled.div`
   max-width: 800px;
   width: 100%;
+  height: 100vh;
   /* max-height: 1000px; */
   display: flex;
   align-items: center;
@@ -47,12 +50,20 @@ const OptionWrapper = styled.div`
 
 const OptionNumWrapper = styled.div`
     background: #0099FF;
+    padding-left: 4px;
+    width: 5%;
 `;
 
 const OptionDescriptionWrapper = styled.div`
     cursor: pointer;
     background: white;
-    width: 100%;
+    padding-left: 6px;
+    width: 95%;
+`;
+
+const Title = styled.div`
+    ${textM};
+    margin: 8px 0;
 `;
 
 
@@ -98,7 +109,7 @@ export default function Quiz(){
     return (
         <TotalWrapper>
             <Header />
-            <p>精神年齢チェッカー</p>
+            <Title>精神年齢チェッカー</Title>
             <ContentsWrapper>
             <ProgressBar progressRate={currentQuestionNum / 5} />
             {renderOptions()}    

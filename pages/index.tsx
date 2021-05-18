@@ -1,43 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from "styled-components";
 import { useRouter } from 'next/router';
 import Header from "components/Header";
 import Footer from "components/Footer";
+import {textM} from "consts/layout";
+import { useMediaQuery } from 'react-responsive';
 
 const BRAIN_IMG = require("public/assets/mental-age.png")
-console.log(BRAIN_IMG);
 
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* flex: 1; */
 `;
 
 const ContentesWrapper = styled.div`
-  /* width: 800px;
-  height: 800px; */
-  height: 600px;
+  height: 100vh;
   display: flex;
   align-items: center;
   flex-direction: column;
   background: white;
   position: relative;
-`;
-
-const ImageHolder = styled.div`
-  justify-content: start;
-  cursor: pointer;
-  &:hover {
-    opacity: 0.5;
-  }
-  /* width: 600px; */
-`;
-
-const AdvisorsWrapper = styled.div`
-  /* width: 100%;
-  display: flex;
-  flex-direction: row; */
+  max-width: 800px;
 `;
 
 const AdvisorHolder = styled.div`
@@ -47,28 +31,40 @@ const AdvisorHolder = styled.div`
   }
 `;
 
+const Image = styled.img<{isPhone?: boolean}>`
+    width: ${({isPhone}) => isPhone ? "100%" : "500px"};
+    margin-bottom: 20px;
+`;
+
 const ADVISOR_IMAGE = require("public/assets/advisor.png");
 
+const Title = styled.div`
+    ${textM};
+    margin: 8px 0;
+`;
+
 export default function Home(){
+  // const [isPhone, setIsPhone] = useState(false);
   const router = useRouter();
+  const isPhone = useMediaQuery({query: "(max-width: 600px)"});
   const handleClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>, url: string) => {
     e.preventDefault();
     router.push(url)
   }
+
+  // useEffect(() => {
+  //   setIsPhone(useMediaQuery({query: "(max-width: 600px)"}));
+  // }, [isPhone])
+
   return (
     <Wrapper>
       <ContentesWrapper>
       <Header />
-
       {/* <div>あなたの精神年齢などを診断し、生活に役立てるアプリです✨</div> */}
-      {/* <ImageHolder > */}
-      <p>New! 精神年齢・診断アドバイザー</p>
-      <AdvisorsWrapper>
+      <Title>New! 精神年齢チェッカー</Title>
       <AdvisorHolder>
-      <img src={BRAIN_IMG} onClick={(e) => handleClick(e, "mental-age")} width={300}/>
+      <Image src={BRAIN_IMG} onClick={(e) => handleClick(e, "mental-age")} isPhone={isPhone}  />
       </AdvisorHolder>
-      </AdvisorsWrapper>
-      {/* </ImageHolder> */}
       <Footer />
       </ContentesWrapper>
     </Wrapper>

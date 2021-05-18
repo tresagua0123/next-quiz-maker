@@ -1,18 +1,10 @@
 import styled from "styled-components";
 
-const ImageHolder = styled.div`
-    /* justify-content: start; */
-    cursor: pointer;
-    &:hover {
-    opacity: 0.8;
-    }
-    /* width: 600px; */
-`;
-
 const Wrapper = styled.div`
-    height: 150px;
+    height: 100px;
     width: 100%;
     background: lightgray;
+    // 注意！外部のコンポーネントで基準となるrelativeを設定すること。
     position: absolute;
     bottom: 0;
     display: flex;

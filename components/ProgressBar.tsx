@@ -11,7 +11,8 @@ const ColorBarWrapper = styled.div`
 `;
 
 const ColorBar = styled.div<{progressRate: number; barWidth: number}>`
-    width: ${({progressRate, barWidth}) => progressRate * barWidth}px;
+    width: ${({progressRate, barWidth}) => progressRate && progressRate * barWidth}px;
+    height: 40px;
     background: #0099FF;
 `;
 
@@ -28,7 +29,7 @@ export const ProgressBar: React.VFC<Props> = ({progressRate}) => {
     return (
     <Wrapper ref={progressBarRef}>
     <ColorBarWrapper>
-    <ColorBar progressRate={progressRate} barWidth={getWidth()}>ProgressBar</ColorBar>
+    <ColorBar progressRate={progressRate} barWidth={getWidth()}></ColorBar>
     </ColorBarWrapper>
     <p>{progressRate * 100} / 100 %</p>
      </Wrapper>)

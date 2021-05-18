@@ -3,6 +3,7 @@ import Header from "components/Header";
 import Footer from "components/Footer";
 import { useRouter } from 'next/router';
 import {textM} from "consts/layout";
+import { useMediaQuery } from 'react-responsive';
 
 const BRAIN_IMG = require("public/assets/brain-start.png");
 
@@ -10,41 +11,41 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* flex: 1; */
-  /* flex:1; */
-  /* flex:1; */
-  /* max-width: 800px; */
-  /* width: 800px; */
+  min-height: 100%;
 `;
 
 const ContentsWrapper = styled.div`
     background: white;
-    /* height: 100%; */
     position: relative;
-    width: 300px;
-    height: 600px;
-    /* max-width: 800px; */
-    /* height: 1000px; */
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* background: white; */
+    align-content: center;
+    max-width: 800px;
 `;
 
 const ImageHolder = styled.div`
-    /* width: 800px; */
-    /* width: 300px; */
     cursor: pointer;
+    &:hover {
+        opacity: 0.5;
+    }
+`;
+
+const Image = styled.img<{isPhone?: boolean}>`
+    width: ${({isPhone}) => isPhone ? "100%" :  "500px"};
+    margin-bottom: 20px;
 `;
 
 const Title = styled.div`
     ${textM};
-    margin-bottom: 4px;
+    margin: 8px 0;
 `;
 
 
 export default function mentalAge(){
     const router = useRouter();
+    const isPhone = useMediaQuery({query: "(max-width: 600px)"});
     const handleClick = (e) => {
         e.preventDefault();
         router.push("mental-age/diagnosis")
@@ -53,10 +54,10 @@ export default function mentalAge(){
     <Wrapper>
     <ContentsWrapper>
     <Header />
-    <Title>精神年齢アドバイザー</Title>
-    <div>あなたの精神年齢は何歳？<br />あなたの精神年齢を無料で診断。精神年齢を高めるアドバイスをGETしよう！</div>
+    <Title>精神年齢チェッカー</Title>
+    {/* <p>あなたの精神年齢は何歳？<br /> 10秒で診断。SNSでシェアしよう！</p> */}
     <ImageHolder onClick={handleClick}>
-    <img  src={BRAIN_IMG} width={300}/>
+    <Image  src={BRAIN_IMG} isPhone={isPhone} />
     </ImageHolder>
     {/* <p onClick={handleClick}>精神年齢をチェックする</p> */}
     <Footer />
