@@ -80,7 +80,7 @@ export default function Result({yamaguchiData, isPhone}) {
         <ShareBlock>
         <p>この結果をシェアする</p>
         <ShareButtonsWrapper>
-        <TwitterShareButton title={`私の山口県民度は${yamaguchiData.id * 20}%でした！#山口県 #山口クイズ #診断メーカー`} url={`https://next-quiz-maker.vercel.app/mental-age/diagnosis/result/${yamaguchiData.id}`} via={"kaimaru31"}>
+        <TwitterShareButton title={`私の山口県民度は${yamaguchiData.id * 20}%でした！#山口県 #山口クイズ #診断メーカー`} url={`https://next-quiz-maker.vercel.app/yamaguchi/diagnosis/result/${yamaguchiData.id}`} via={"kaimaru31"}>
             <TwitterIcon size={31} round />
         </TwitterShareButton>
         </ShareButtonsWrapper>
