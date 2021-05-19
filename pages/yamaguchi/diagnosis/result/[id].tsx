@@ -63,9 +63,9 @@ export default function Result({yamaguchiData, isPhone}) {
     return (
     <Wrapper>
         <Head 
-        description={yamaguchiData.description}
+        description={`結果: ${yamaguchiData.description}`}
         // 参考URL: https://nextjs.org/docs/basic-features/static-file-serving
-        image={"https://next-quiz-maker.vercel.app/assets/yamaguchi-share.png"}
+        image={"https://next-quiz-maker.vercel.app/assets/yama-share.png"}
         title={yamaguchiData.title}
         />
         <ContentsWrapper isPhone={isPhone}>
