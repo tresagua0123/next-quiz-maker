@@ -8,86 +8,86 @@ type SelectedQuestion = {
         }[];
 }
 
-export const MENTAL_AGE_QUESTIONS: SelectedQuestion[] = [
+export const YAMAGUCHI_QUESTIONS: SelectedQuestion[] = [
     {
         id: 0, 
-        title: "落ち着いているねとよく言われる",
+        title: "「特牛」読み方は？",
         descriptions: [{
-            text: "頻繁に言われる",
-            point: 12
+            text: "こっとい",
+            point: 1
         }, {
-            text: "時々言われる", 
-            point: 6,
+            text: "とくうし", 
+            point: 0,
         }, {
-            text: "あまり言われない",
-            point: -1,
+            text: "とくぎゅう",
+            point: 0,
         }, {
-            text: "全く言われない",
-            point: -10}]
+            text: "とっこい",
+            point: 0}]
     }, 
     {
         id: 1, 
-        title: "弱者の味方である",
+        title: "山口県に隣接している県はどれ？",
         descriptions: [{
-            text: "常にそう",
-            point: 16
+            text: "福岡県",
+            point: 0
         }, {
-            text: "時々そう", 
-            point: 11,
+            text: "鳥取県", 
+            point: 0,
         }, {
-            text: "あまりそうでない",
-            point: -1,
+            text: "島根県",
+            point: 1,
         }, {
-            text: "全くそうでない",
-            point: -2}]
+            text: "香川県",
+            point: 0}]
     }, 
     {
         id: 2, 
-        title: "周りのことよりも、自分中心で動くことが多い",
+        title: "山口県が漁獲量日本一の魚は？",
         descriptions: [{
-            text: "頻繁にある",
-            point: -4
+            text: "いわし",
+            point: 0
         }, {
-            text: "時々ある", 
-            point: -2,
+            text: "ふぐ", 
+            point: 1,
         }, {
-            text: "あまりない",
-            point: 8,
+            text: "さんま",
+            point: 0,
         }, {
-            text: "全くない",
-            point: 12}]
+            text: "ほっけ",
+            point: 0}]
     }, 
     {
         id: 3, 
-        title: "人に同情することが多い",
+        title: "山口県にない市は？",
         descriptions: [{
-            text: "頻繁にある",
-            point: 12
+            text: "岩国市",
+            point: 0
         }, {
-            text: "時々ある", 
-            point: 8,
+            text: "下関市", 
+            point: 0,
         }, {
-            text: "あまりない",
-            point: -2,
+            text: "益田市",
+            point: 1,
         }, {
-            text: "全くない",
-            point: -4}]
+            text: "長門市",
+            point: 0}]
     },
     {
         id: 4, 
-        title: "自分だけでなく周囲を考えて行動する",
+        title: "山口県内で展開するスーパーと言えば？",
         descriptions: [{
-            text: "頻繁にする",
-            point: 10
+            text: "スーパーまるき",
+            point: 1
         }, {
-            text: "時々する", 
-            point: 7,
+            text: "スーパーはなみずき", 
+            point: 0,
         }, {
-            text: "あまりしない",
-            point: -2,
+            text: "スーパーうべ",
+            point: 0,
         }, {
-            text: "全くしない",
-            point: -5}]
+            text: "スーパーながと",
+            point: 0}]
     },
    
 ]

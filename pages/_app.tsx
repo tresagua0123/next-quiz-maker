@@ -6,7 +6,7 @@ const BREAK_POINT = 600;
 
 const Wrapper = styled.div<{isPhone: boolean}>`
   background: lightblue;
-  max-height: ${({isPhone}) => isPhone ? `100vh` : "800px"};
+  max-height: ${({isPhone}) => isPhone ? `100vh` : "100vh"};
 `;
 
 function MyApp({ Component, pageProps, router }: AppProps) {

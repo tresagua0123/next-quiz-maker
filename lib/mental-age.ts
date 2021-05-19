@@ -2,7 +2,7 @@ export async function getMentalAgeData(id) {
     return {
       id,
       title: "精神年齢アドバイザー",
-      description: `あなたの精神年齢は${id}歳です！` + getAgeText(id)
+      description: getAgeText(id)
     }
 }
 

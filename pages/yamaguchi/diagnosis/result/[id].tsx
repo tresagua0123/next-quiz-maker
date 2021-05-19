@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { getMentalAgeData } from "lib/mental-age"
+import { getYamaguchiData } from "lib/yamaguchi";
 import Head from "components/Head";
 import { 
     FacebookShareButton, 
@@ -8,12 +8,9 @@ import {
     TwitterShareButton, 
     TwitterIcon
 } from 'react-share';
-import { useRouter } from 'next/router'
-import Link from 'next/link';
 import Header from "components/Header";
 import Footer from "components/Footer";
 import {textM} from "consts/layout";
-import { useMediaQuery } from 'react-responsive';
 
 const BABY_IMAGE = require("public/assets/baby_boy04_laugh.png");
 const OLD_MAN_IMAGE = require("public/assets/ojiisan01_laugh.png");
@@ -23,29 +20,27 @@ const Wrapper = styled.div`
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    /* background: lightgray; */
 `;
 
 const ContentsWrapper = styled.div<{isPhone?: boolean}>`
-  /* max-width: 800px; */
   width: ${({isPhone}) => !isPhone && "500px"};
-  /* width: 100%; */
-  height: 100vh;
-  /* max-height: 1000px; */
+  min-height: ${({isPhone })=> !isPhone && "800px"};
   display: flex;
   align-items: center;
   flex-direction: column;
   position: relative;
   background: white;
+  height: 100vh;
 `;
 
 const ResultWrapper = styled.div`
-    width: 75%;
+    max-width: 75%;
 `;
 
 const ShareButtonsWrapper = styled.div`
     display: flex;
     flex-direction: row;
+    justify-content: center;
 `;
 
 const Title = styled.div`
@@ -53,31 +48,43 @@ const Title = styled.div`
     margin: 8px 0;
 `;
 
+const ShareBlock = styled.div`
+    position: absolute;
+    bottom: 100px;
+`;
 
-export default function Result({mentalAgeData, isPhone}) {
-    const router = useRouter();
+const Percentage = styled.div`
+    font-size: 80px;
+`;
+
+
+export default function Result({yamaguchiData, isPhone}) {
+    console.log(yamaguchiData)
     return (
     <Wrapper>
         <Head 
-        description={mentalAgeData.description}
+        description={yamaguchiData.description}
         // 参考URL: https://nextjs.org/docs/basic-features/static-file-serving
-        image={"https://next-quiz-maker.vercel.app/assets/baby_boy04_laugh.png"}
-        title={mentalAgeData.title}
+        image={"https://next-quiz-maker.vercel.app/assets/yamaguchi-share.png"}
+        title={yamaguchiData.title}
         />
         <ContentsWrapper isPhone={isPhone}>
         <Header />
-        <Title>あなたの精神年齢</Title>
+        <Title>あなたの山口県民度</Title>
         <ResultWrapper>
-        <p>{mentalAgeData.description}</p>
+        <p>{`診断の結果、あなたの山口県民度は`}</p>
+        <Percentage>{`${yamaguchiData.id * 20}%`}</Percentage>
+        <p>でした！ </p>
+        <div>{yamaguchiData.description}</div>
         </ResultWrapper>
-        <img src={mentalAgeData.id > 60 ? OLD_MAN_IMAGE : BABY_IMAGE}/>
-        {/* <Link href={"/mental-age"}>もどる</Link> */}
+        <ShareBlock>
         <p>この結果をシェアする</p>
         <ShareButtonsWrapper>
-        <TwitterShareButton title={`私の精神年齢は${mentalAgeData.id}歳でした！あなたの精神年齢は？ #精神年齢 #精神年齢診断`} url={`https://next-quiz-maker.vercel.app/mental-age/diagnosis/result/${mentalAgeData.id}`} via={"kaimaru31"}>
+        <TwitterShareButton title={`私の山口県民度は${yamaguchiData.id * 20}%でした！#山口県 #山口クイズ #診断メーカー`} url={`https://next-quiz-maker.vercel.app/mental-age/diagnosis/result/${yamaguchiData.id}`} via={"kaimaru31"}>
             <TwitterIcon size={31} round />
         </TwitterShareButton>
         </ShareButtonsWrapper>
+        </ShareBlock>
         <Footer />
         </ContentsWrapper>
     </Wrapper>
@@ -85,10 +92,10 @@ export default function Result({mentalAgeData, isPhone}) {
 }
 
 export async function getServerSideProps({params}) {
-    const mentalAgeData = await getMentalAgeData(params.id)
+    const yamaguchiData = await getYamaguchiData(params.id)
     return {
         props: {
-          mentalAgeData
+          yamaguchiData
       }
     }
 }

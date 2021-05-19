@@ -5,7 +5,7 @@ import Header from "components/Header";
 import Footer from "components/Footer";
 import {textM} from "consts/layout";
 
-const BRAIN_IMG = require("public/assets/mental-age.png")
+const BRAIN_IMG = require("public/assets/yamaguchi-start.png")
 
 const Wrapper = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ const Image = styled.img<{isPhone?: boolean}>`
 
 const Title = styled.div`
     ${textM};
-    margin: 8px 0;
+    margin: 8px 0 14px 0;
 `;
 
 export default function Home(pageProps){
@@ -51,10 +51,9 @@ export default function Home(pageProps){
     <Wrapper>
       <ContentesWrapper>
       <Header />
-      {/* <div>あなたの精神年齢などを診断し、生活に役立てるアプリです✨</div> */}
-      <Title>New! 精神年齢チェッカー</Title>
+      <Title>山口県民チェッカー</Title>
       <AdvisorHolder>
-      <Image src={BRAIN_IMG} onClick={(e) => handleClick(e, "mental-age")} isPhone={pageProps.isPhone}  />
+      <Image src={BRAIN_IMG} onClick={(e) => handleClick(e, "yamaguchi")} isPhone={pageProps.isPhone}  />
       </AdvisorHolder>
       <Footer />
       </ContentesWrapper>

@@ -3,9 +3,8 @@ import styled from "styled-components";
 import { useRouter } from 'next/router';
 import { ProgressBar } from "components/ProgressBar";
 import Header from "components/Header";
-import { MENTAL_AGE_QUESTIONS } from "consts/texts";
+import { YAMAGUCHI_QUESTIONS } from "consts/texts";
 import {textM} from "consts/layout";
-
 
 const TotalWrapper = styled.div`
     display: flex;
@@ -14,23 +13,18 @@ const TotalWrapper = styled.div`
     align-items: center;
     background: lightblue;
     flex: 1;
-    /* max-width: 350px; */
-    /* width: 800px; */
 `;
 
 const ContentsWrapper = styled.div`
   max-width: 800px;
   width: 100%;
   height: 100vh;
-  /* max-height: 1000px; */
   display: flex;
   align-items: center;
   flex-direction: column;
-  /* background: white; */
 `
 
 const QuestionWrapper = styled.div`
-    /* background: white; */
     width: 100%;
     justify-content: center;
     flex-direction: column;
@@ -66,8 +60,6 @@ const Title = styled.div`
     margin: 8px 0;
 `;
 
-
-
 export default function Quiz(){
     const router = useRouter();
     const [currentQuestionNum, setCurrentQuestionNum] = useState(0);
@@ -85,14 +77,13 @@ export default function Quiz(){
 
     const renderOptions = () => {
         if(currentQuestionNum === 5) {
-            router.push(`/mental-age/diagnosis/result/${totalPoint}`);
+            router.push(`/yamaguchi/diagnosis/result/${totalPoint}`);
             return;
         };
         return (
         <QuestionWrapper>
-            <QuestionText>{MENTAL_AGE_QUESTIONS[currentQuestionNum].title}</QuestionText>
-            {MENTAL_AGE_QUESTIONS[currentQuestionNum].descriptions.map((description, i) => {
-                // setTotalPoint(totalPoint + description.point);
+            <QuestionText>{YAMAGUCHI_QUESTIONS[currentQuestionNum].title}</QuestionText>
+            {YAMAGUCHI_QUESTIONS[currentQuestionNum].descriptions.map((description, i) => {
                 return (
                     <OptionWrapper>
                     <OptionNumWrapper><p>{`${i}. `}</p></OptionNumWrapper>
@@ -108,7 +99,7 @@ export default function Quiz(){
     return (
         <TotalWrapper>
             <Header />
-            <Title>精神年齢チェッカー</Title>
+            <Title>山口県民度チェッカー</Title>
             <ContentsWrapper>
             <ProgressBar progressRate={currentQuestionNum / 5} />
             {renderOptions()}    

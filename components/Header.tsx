@@ -16,7 +16,7 @@ const ADVISOR_IMAGE = require("public/assets/advisor.png");
 
 export default function Header(){
     return(
-    <Link href={"/"}>
+    <Link href={"/yamaguchi"}>
     <ImageHolder>
     <Image src={ADVISOR_IMAGE} height={60} />
     </ImageHolder>
