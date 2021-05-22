@@ -13,10 +13,11 @@ const Wrapper = styled.div`
   min-height: 100%;
 `;
 
-const ContentsWrapper = styled.div`
+const ContentsWrapper = styled.div<{isPhone: boolean}>`
     background: white;
     position: relative;
     height: 100vh;
+    min-height: ${({isPhone })=> !isPhone && "800px"};
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,7 +51,7 @@ export default function yamaguchi(pageProps){
       }
     return (
     <Wrapper>
-    <ContentsWrapper>
+    <ContentsWrapper isPhone={pageProps.isPhone}>
     <Header />
     <Title>山口県民チェッカー</Title>
     <ImageHolder onClick={handleClick}>

@@ -13,8 +13,9 @@ const Wrapper = styled.div`
   flex-direction: column;
 `;
 
-const ContentesWrapper = styled.div`
+const ContentesWrapper = styled.div<{isPhone: boolean}>`
   height: 100vh;
+  min-height: ${({isPhone })=> !isPhone && "800px"};
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -49,7 +50,7 @@ export default function Home(pageProps){
 
   return (
     <Wrapper>
-      <ContentesWrapper>
+      <ContentesWrapper isPhone={pageProps.isPhone}>
       <Header />
       <Title>山口県民チェッカー</Title>
       <AdvisorHolder>
