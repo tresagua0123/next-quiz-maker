@@ -17,8 +17,9 @@ const Wrapper = styled.div`
 
 export default function Header(){
     return(
-        <Wrapper>
-            <p>©️ 2021 みんなの診断アドバイザー ®️ All right reserved. </p>
-        </Wrapper>
+        <div></div>
+        // <Wrapper>
+        //     <p>©️ 2021 みんなの診断アドバイザー ®️ All right reserved. </p>
+        // </Wrapper>
     )
 }

@@ -98,7 +98,7 @@ export default function Quiz(){
     
     return (
         <TotalWrapper>
-            <Header />
+            {/* <Header /> */}
             <Title>山口県民度チェッカー</Title>
             <ContentsWrapper>
             <ProgressBar progressRate={currentQuestionNum / 5} />
